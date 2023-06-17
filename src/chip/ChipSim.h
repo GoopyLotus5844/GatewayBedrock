@@ -55,9 +55,23 @@ namespace Gateway {
         void markConnectedComps(Node& node, int outputIdx, ActiveStack active);
 
     public:
-        void update(int* sigs, ActiveStack& active, Circuit& circuit, int compId);
+        /**
+         * Performs a logic update, acquiring input signals from the enclosing circuit.
+         * @param signals Pointer to the first value in the signals array associated with the Chip instance
+         * @param circuit The enclosing Circuit
+         * @param compId The ID of the Chip instance
+         */
+        void update(int* sigs, Circuit& circuit, int compId);
 
-        void update(int* sigs, int* outerSigs, ActiveStack& active, ChipSim& sim, int nodeId);
+        /**
+         * Performs a logic update, acquiring input signals from the enclosing ChipSim.
+         * @param signals Pointer to the first value in the part of the signals array used for this ChipSim
+         * @param outerSignals Pointer to the first value in the part of the signals array for the enclosing ChipSim
+         * @param active The ActiveStack being used by the enclosing ChipSim
+         * @param sim The enclosing ChipSim
+         * @param nodeId The ID of the Node representing this Chip in the enclosing ChipSim
+         */
+        void update(int* sigs, int* outerSignals, ActiveStack& active, ChipSim& sim, int nodeId);
 
         [[nodiscard]] const std::vector<int> &getDefSignals() const;
 

@@ -253,7 +253,8 @@ namespace Gateway {
 
     //PUBLIC METHODS
 
-    void ChipSim::update(int* signals, ActiveStack &active, Circuit& circuit, int compId) {
+    void ChipSim::update(int* signals, Circuit& circuit, int compId) {
+        ActiveStack active;
         bool change = prepareInput(signals, active, circuit, compId);
         if(change) updateEventDriven(signals, active);
     }
