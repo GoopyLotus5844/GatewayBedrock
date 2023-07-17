@@ -7,7 +7,7 @@
 #include "../main/Utils.h"
 #include "../chip/TemplateList.h"
 
-namespace Gateway {
+namespace GtwEngine {
 
     Component::Component(CompType type, int id, int x, int y) : type(type), id(id), x(x), y(y), data(nullptr) {
         std::array<int, 2> inputsOutputs = Utils::numInputsOutputs(type);
@@ -107,4 +107,4 @@ namespace Gateway {
         return data;
     }
 
-} // Gateway
+} // GtwEngine

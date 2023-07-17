@@ -11,7 +11,7 @@
 #include "CompData.h"
 #include "InPin.h"
 
-namespace Gateway {
+namespace GtwEngine {
 
     class Component {
 
@@ -70,4 +70,4 @@ namespace Gateway {
         [[nodiscard]] CompData *getData() const;
     };
 
-} // Gateway
+} // GtwEngine

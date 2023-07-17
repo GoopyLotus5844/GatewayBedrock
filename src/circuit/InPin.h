@@ -8,7 +8,7 @@
 #include "array"
 #include "unordered_map"
 
-namespace Gateway {
+namespace GtwEngine {
 
     class InPin {
 
@@ -28,6 +28,6 @@ namespace Gateway {
 
     };
 
-} // Gateway
+} // GtwEngine
 
 #endif //GATEWAYENGINE_INPIN_H

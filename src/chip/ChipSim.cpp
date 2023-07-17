@@ -6,7 +6,7 @@
 #include "ChipTemplate.h"
 #include "TemplateList.h"
 
-namespace Gateway {
+namespace GtwEngine {
 
     ChipSim::ChipSim(Circuit &circuit) {
         numInputs = (int) circuit.getSwitches().size();
@@ -272,4 +272,4 @@ namespace Gateway {
         return signals[outputAddrs[idx]];
     }
 
-} // Gateway
+} // GtwEngine

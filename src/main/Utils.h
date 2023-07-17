@@ -7,7 +7,7 @@
 
 #include <string>
 
-namespace Gateway {
+namespace GtwEngine {
 
     namespace Utils {
         std::string CTYPE_STRS[] = {"AND", "OR", "XOR", "NOT", "NAND", "NOR", "XNOR",

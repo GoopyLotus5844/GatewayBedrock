@@ -7,7 +7,7 @@
 
 #include <ostream>
 
-namespace Gateway {
+namespace GtwEngine {
 
     enum CompType {
         AND = 0,
@@ -24,6 +24,6 @@ namespace Gateway {
         SPLIT_OUT
     };
 
-} // Gateway
+} // GtwEngine
 
 #endif //GATEWAYENGINE_COMPTYPE_H

@@ -4,7 +4,7 @@
 
 #include "InPin.h"
 
-namespace Gateway {
+namespace GtwEngine {
 
     void InPin::connect(int id, int otherIdx) {
         connection[0] = id;
@@ -27,4 +27,4 @@ namespace Gateway {
     const std::array<int, 2> &InPin::getConnection() const {
         return connection;
     }
-} // Gateway
+} // GtwEngine

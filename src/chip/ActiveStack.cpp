@@ -5,7 +5,7 @@
 #include "ActiveStack.h"
 #include <vector>
 
-namespace Gateway {
+namespace GtwEngine {
 
     int ActiveStack::next() {
         if(remainCount == 0) flip();
@@ -58,4 +58,4 @@ namespace Gateway {
         remainStack = flipState ? &activeA : &activeB;
     }
 
-} // Gateway
+} // GtwEngine

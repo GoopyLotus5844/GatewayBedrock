@@ -4,7 +4,7 @@
 
 #include "TemplateList.h"
 
-namespace Gateway {
+namespace GtwEngine {
 
     int TemplateList::createTemplate(Circuit& circuit) {
         int id = (int) templates.size();

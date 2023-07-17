@@ -4,5 +4,5 @@
 
 #include "Wire.h"
 
-namespace Gateway {
-} // Gateway
+namespace GtwEngine {
+} // GtwEngine

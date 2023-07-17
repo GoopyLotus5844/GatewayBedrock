@@ -9,7 +9,7 @@
 #include "ChipSim.h"
 #include <vector>
 
-namespace Gateway {
+namespace GtwEngine {
 
     class ChipTemplate {
     private:
@@ -33,6 +33,6 @@ namespace Gateway {
         [[nodiscard]] int getId() const;
     };
 
-} // Gateway
+} // GtwEngine
 
 #endif //GATEWAYENGINE_CHIPTEMPLATE_H

@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <algorithm>
 
-namespace Gateway {
+namespace GtwEngine {
 
     int Circuit::addComp(CompType type, int x, int y) {
         int id = nextId();
@@ -89,4 +89,4 @@ namespace Gateway {
     const std::vector<int> &Circuit::getLights() const {
         return lights;
     }
-} // Gateway
+} // GtwEngine

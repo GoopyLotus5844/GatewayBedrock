@@ -4,7 +4,7 @@
 
 #include "CompData.h"
 
-namespace Gateway {
+namespace GtwEngine {
 
     int CompData::getTemplateId() const {
         return templateId;

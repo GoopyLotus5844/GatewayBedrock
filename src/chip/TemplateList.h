@@ -8,7 +8,7 @@
 #include "ChipTemplate.h"
 #include <vector>
 
-namespace Gateway {
+namespace GtwEngine {
 
     class TemplateList {
 

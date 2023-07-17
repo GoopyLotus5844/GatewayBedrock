@@ -4,7 +4,7 @@
 
 #include "ChipTemplate.h"
 
-namespace Gateway {
+namespace GtwEngine {
 
     ChipTemplate::ChipTemplate(Circuit& circuit, int id) : circuit(circuit), sim(ChipSim(circuit)), id(id) { }
 
@@ -28,4 +28,4 @@ namespace Gateway {
         return sim;
     }
 
-} // Gateway
+} // GtwEngine

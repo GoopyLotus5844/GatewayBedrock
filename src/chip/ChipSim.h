@@ -10,7 +10,7 @@
 #include "../circuit/Circuit.h"
 #include "ActiveStack.h"
 
-namespace Gateway {
+namespace GtwEngine {
 
     class ChipSim {
     private:
@@ -78,6 +78,6 @@ namespace Gateway {
         [[nodiscard]] int getOutput(int* sigs, int idx);
     };
 
-} // Gateway
+} // GtwEngine
 
 #endif //GATEWAYENGINE_CHIPSIM_H

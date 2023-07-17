@@ -9,7 +9,7 @@
 #include "../circuit/CompType.h"
 #include "ActiveStack.h"
 
-namespace Gateway {
+namespace GtwEngine {
 
     struct Node {
 
@@ -47,6 +47,6 @@ namespace Gateway {
         Node(CompType type, int sigAddr, int connectAddr, uint8_t numInputs, uint8_t numOutputs);
     };
 
-} // Gateway
+} // GtwEngine
 
 #endif //GATEWAYENGINE_NODE_H

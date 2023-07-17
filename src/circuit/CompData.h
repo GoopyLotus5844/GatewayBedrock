@@ -7,7 +7,7 @@
 
 #include <vector>
 
-namespace Gateway {
+namespace GtwEngine {
 
     class CompData {
 

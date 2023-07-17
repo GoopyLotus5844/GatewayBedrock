@@ -5,7 +5,7 @@
 #ifndef GATEWAYENGINE_WIRE_H
 #define GATEWAYENGINE_WIRE_H
 
-namespace Gateway {
+namespace GtwEngine {
 
     class Wire {
     public:
@@ -18,6 +18,6 @@ namespace Gateway {
         int destIdx;
     };
 
-} // Gateway
+} // GtwEngine
 
 #endif //GATEWAYENGINE_WIRE_H

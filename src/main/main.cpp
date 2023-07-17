@@ -9,9 +9,10 @@
 #include "../circuit/Circuit.h"
 #include "../chip/ChipSim.h"
 #include "../chip/TemplateList.h"
+#include "../ui/CompPicker.h"
 
 int main(int argc, char *argv[]) {
-    using namespace Gateway;
+    using namespace GtwEngine;
 
     Circuit chipCirc;
     int sw1 = chipCirc.addComp(CompType::SWITCH, 0, 0);
@@ -54,27 +55,21 @@ int main(int argc, char *argv[]) {
     QPixmap pixmap(":/images/open_file.png");
     QIcon ButtonIcon(pixmap);
     toolbarButton1.setIcon(ButtonIcon);
-    toolbarButton1.setFixedSize(50, 50);
+//    toolbarButton1.setFixedSize(50, 50);
 
     QPushButton toolbarButton2("Save", nullptr);
-    toolbarButton2.setFixedSize(30, 30);
+//    toolbarButton2.setFixedSize(30, 30);
 
     QHBoxLayout *toolbarLayout = new QHBoxLayout();
     toolbarLayout->addWidget(&toolbarButton1);
     toolbarLayout->addWidget(&toolbarButton2);
     toolbarLayout->addStretch(1);
 
-    QPushButton compButton("AND", nullptr);
-
-    QWidget *compPicker = new QWidget();
-    QVBoxLayout *compPickerLayout = new QVBoxLayout();
-    compPickerLayout->addWidget(&compButton);
-    compPicker->setLayout(compPickerLayout);
-    compPicker->setFixedWidth(300);
+    GtwUI::CompPicker compPicker(nullptr);
 
     QWidget *circuitArea = new QWidget();
     QHBoxLayout *mainLayout = new QHBoxLayout();
-    mainLayout->addWidget(compPicker);
+    mainLayout->addWidget(&compPicker);
     mainLayout->addWidget(circuitArea);
 
     QVBoxLayout *windowLayout = new QVBoxLayout();
@@ -84,7 +79,7 @@ int main(int argc, char *argv[]) {
 
     // Set up the model and configure the view...
     window.setWindowTitle(
-            QApplication::translate("nestedlayouts", "Gateway"));
+            QApplication::translate("nestedlayouts", "GtwEngine"));
     window.setWindowState(Qt::WindowMaximized);
     window.show();
 

@@ -8,7 +8,7 @@
 #include <vector>
 #include "Component.h"
 
-namespace Gateway {
+namespace GtwEngine {
 
     class Circuit {
     public:
@@ -64,6 +64,6 @@ namespace Gateway {
         int nextId();
     };
 
-} // Gateway
+} // GtwEngine
 
 #endif //GATEWAYENGINE_CIRCUIT_H

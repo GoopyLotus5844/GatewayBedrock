@@ -9,7 +9,7 @@
 #include <array>
 #include <unordered_map>
 
-namespace Gateway {
+namespace GtwEngine {
 
     class OutPin {
 

@@ -4,7 +4,7 @@
 
 #include "OutPin.h"
 
-namespace Gateway {
+namespace GtwEngine {
 
     void OutPin::connect(int id, int otherIdx) {
         connections.push_back({id, otherIdx});

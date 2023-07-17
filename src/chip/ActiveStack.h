@@ -8,7 +8,7 @@
 #include <stack>
 #include <vector>
 
-namespace Gateway {
+namespace GtwEngine {
 
     class ActiveStack {
 
@@ -50,6 +50,6 @@ namespace Gateway {
         void updatePtrs();
     };
 
-} // Gateway
+} // GtwEngine
 
 #endif //GATEWAYENGINE_ACTIVESTACK_H
