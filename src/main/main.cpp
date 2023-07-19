@@ -65,10 +65,9 @@ int main(int argc, char *argv[]) {
     toolbarLayout->addWidget(&toolbarButton2);
     toolbarLayout->addStretch(1);
 
-    GtwUI::CompPicker compPicker(nullptr);
-
-    QWidget *circuitArea = new QWidget();
     QHBoxLayout *mainLayout = new QHBoxLayout();
+    GtwUI::CompPicker compPicker(nullptr);
+    QWidget *circuitArea = new QWidget();
     mainLayout->addWidget(&compPicker);
     mainLayout->addWidget(circuitArea);
 

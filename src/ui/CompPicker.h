@@ -6,6 +6,7 @@
 #define GATEWAYBEDROCK_COMPPICKER_H
 
 #include <QWidget>
+#include <QGridLayout>
 
 namespace GtwUI {
 
@@ -13,10 +14,13 @@ namespace GtwUI {
         Q_OBJECT
 
     public:
-        CompPicker(QWidget* parent = nullptr);
+        explicit CompPicker(QWidget* parent = nullptr);
 
     private slots:
         void compClicked();
+
+    private:
+        void addButton(QGridLayout *layout, const QString& name, int row, int col);
     };
 
 }
