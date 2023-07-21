@@ -5,11 +5,13 @@
 #include <QTableView>
 #include <QHBoxLayout>
 #include <iostream>
+#include <QSplitter>
 #include "../circuit/Component.h"
 #include "../circuit/Circuit.h"
 #include "../chip/ChipSim.h"
 #include "../chip/TemplateList.h"
 #include "../ui/CompPicker.h"
+#include "../ui/Properties.h"
 
 int main(int argc, char *argv[]) {
     using namespace GtwEngine;
@@ -65,22 +67,30 @@ int main(int argc, char *argv[]) {
     toolbarLayout->addWidget(&toolbarButton2);
     toolbarLayout->addStretch(1);
 
-    QHBoxLayout *mainLayout = new QHBoxLayout();
+    QSplitter *splitter = new QSplitter();
+
+    QWidget *sidebar = new QWidget();
+    QVBoxLayout *sidebarLayout = new QVBoxLayout();
     GtwUI::CompPicker compPicker(nullptr);
+    GtwUI::Properties properties(nullptr);
+    sidebarLayout->addWidget(&compPicker);
+    sidebarLayout->addWidget(&properties);
+    sidebar->setLayout(sidebarLayout);
+
     QWidget *circuitArea = new QWidget();
-    mainLayout->addWidget(&compPicker);
-    mainLayout->addWidget(circuitArea);
+    splitter->addWidget(sidebar);
+    splitter->addWidget(circuitArea);
 
     QVBoxLayout *windowLayout = new QVBoxLayout();
     windowLayout->addLayout(toolbarLayout);
-    windowLayout->addLayout(mainLayout);
+    windowLayout->addWidget(splitter);
     window.setLayout(windowLayout);
 
     // Set up the model and configure the view...
     window.setWindowTitle(
             QApplication::translate("nestedlayouts", "GtwEngine"));
-    window.setWindowState(Qt::WindowMaximized);
     window.show();
+    window.setWindowState(Qt::WindowMaximized);
 
     return app.exec();
 }
