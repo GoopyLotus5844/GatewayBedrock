@@ -1,5 +1,4 @@
 #include <QApplication>
-#include <QPushButton>
 #include <QLabel>
 #include <QLineEdit>
 #include <QTableView>
@@ -7,16 +6,13 @@
 #include <iostream>
 #include <QSplitter>
 #include <QStyleFactory>
-#include <QScrollArea>
-#include <QMainWindow>
 #include <QDockWidget>
 #include <QToolBar>
 #include "../circuit/Component.h"
 #include "../circuit/Circuit.h"
 #include "../chip/ChipSim.h"
 #include "../chip/TemplateList.h"
-#include "../ui/CompPicker.h"
-#include "../ui/Properties.h"
+#include "../ui/MainWindow.h"
 
 int main(int argc, char *argv[]) {
     using namespace GtwEngine;
@@ -55,61 +51,7 @@ int main(int argc, char *argv[]) {
     std::cout << "Done compiling" << std::endl;
 
     QApplication app(argc, argv);
-    QMainWindow window;
-
-    QPushButton toolbarButton1(nullptr);
-
-    QPixmap pixmap(":/images/open_file.png");
-    QIcon openFileIcon(pixmap);
-    QAction *openAction = new QAction(openFileIcon, "Open", nullptr);
-
-//    toolbarButton1.setFixedSize(50, 50);
-
-    QPushButton toolbarButton2("Save", nullptr);
-//    toolbarButton2.setFixedSize(30, 30);
-
-    QHBoxLayout *toolbarLayout = new QHBoxLayout();
-    toolbarLayout->addWidget(&toolbarButton1);
-    toolbarLayout->addWidget(&toolbarButton2);
-    toolbarLayout->addStretch(1);
-
-    QSplitter *sidebarSplitter = new QSplitter();
-    sidebarSplitter->setOrientation(Qt::Vertical);
-
-    QScrollArea *scrollArea = new QScrollArea();
-    scrollArea->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
-    scrollArea->setWidgetResizable( true );
-    scrollArea->setGeometry( 10, 10, 200, 200 );
-
-    GtwUI::CompPicker compPicker(nullptr);
-
-    scrollArea->setWidget(&compPicker);
-    scrollArea->setWidget(&compPicker);
-    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
-    GtwUI::Properties properties(nullptr);
-
-    QWidget *circuitArea = new QWidget();
-
-    QVBoxLayout *windowLayout = new QVBoxLayout();
-    windowLayout->addLayout(toolbarLayout);
-//    window.setLayout(windowLayout);
-
-    QDockWidget *pickerDock = new QDockWidget();
-    QDockWidget *propertiesDock = new QDockWidget();
-    pickerDock->setWidget(scrollArea);
-    propertiesDock->setWidget(&properties);
-    window.addDockWidget(Qt::LeftDockWidgetArea, pickerDock);
-    window.addDockWidget(Qt::RightDockWidgetArea, propertiesDock);
-    window.setCentralWidget(circuitArea);
-
-    QToolBar *toolbar = new QToolBar();
-    toolbar->addAction(openAction);
-    window.addToolBar(toolbar);
-
-    // Set up the model and configure the view...
-    window.setWindowTitle(
-            QApplication::translate("nestedlayouts", "GtwEngine"));
+    GtwUI::MainWindow window(nullptr);
     window.show();
     window.setWindowState(Qt::WindowMaximized);
     QApplication::setStyle(QStyleFactory::create("Fusion"));
