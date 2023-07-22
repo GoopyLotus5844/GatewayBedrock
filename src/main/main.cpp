@@ -73,11 +73,6 @@ int main(int argc, char *argv[]) {
     toolbarLayout->addWidget(&toolbarButton2);
     toolbarLayout->addStretch(1);
 
-    QSplitter *mainSplitter = new QSplitter();
-
-    QWidget *sidebar = new QWidget();
-    QVBoxLayout *sidebarLayout = new QVBoxLayout();
-
     QSplitter *sidebarSplitter = new QSplitter();
     sidebarSplitter->setOrientation(Qt::Vertical);
 
@@ -89,26 +84,23 @@ int main(int argc, char *argv[]) {
     GtwUI::CompPicker compPicker(nullptr);
 
     scrollArea->setWidget(&compPicker);
+    scrollArea->setWidget(&compPicker);
     scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
     GtwUI::Properties properties(nullptr);
-    sidebarSplitter->addWidget(scrollArea);
-    sidebarSplitter->addWidget(&properties);
-    sidebarLayout->addWidget(sidebarSplitter);
-    sidebar->setLayout(sidebarLayout);
 
     QWidget *circuitArea = new QWidget();
-    mainSplitter->addWidget(sidebar);
-    mainSplitter->addWidget(circuitArea);
 
     QVBoxLayout *windowLayout = new QVBoxLayout();
     windowLayout->addLayout(toolbarLayout);
-    windowLayout->addWidget(mainSplitter);
 //    window.setLayout(windowLayout);
 
-    QDockWidget *sidebarDock = new QDockWidget();
-    sidebarDock->setWidget(sidebar);
-    window.addDockWidget(Qt::LeftDockWidgetArea, sidebarDock);
+    QDockWidget *pickerDock = new QDockWidget();
+    QDockWidget *propertiesDock = new QDockWidget();
+    pickerDock->setWidget(scrollArea);
+    propertiesDock->setWidget(&properties);
+    window.addDockWidget(Qt::LeftDockWidgetArea, pickerDock);
+    window.addDockWidget(Qt::RightDockWidgetArea, propertiesDock);
     window.setCentralWidget(circuitArea);
 
     QToolBar *toolbar = new QToolBar();
