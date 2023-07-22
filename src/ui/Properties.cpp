@@ -11,6 +11,7 @@ namespace GtwUI {
     Properties::Properties(QWidget* parent): QWidget(parent) {
         QPushButton *button = new QPushButton("Do something", nullptr);
         QVBoxLayout *layout = new QVBoxLayout();
+        layout->setAlignment(Qt::AlignTop);
         layout->addWidget(button);
         setLayout(layout);
     }

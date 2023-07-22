@@ -6,6 +6,11 @@
 #include <QHBoxLayout>
 #include <iostream>
 #include <QSplitter>
+#include <QStyleFactory>
+#include <QScrollArea>
+#include <QMainWindow>
+#include <QDockWidget>
+#include <QToolBar>
 #include "../circuit/Component.h"
 #include "../circuit/Circuit.h"
 #include "../chip/ChipSim.h"
@@ -50,13 +55,14 @@ int main(int argc, char *argv[]) {
     std::cout << "Done compiling" << std::endl;
 
     QApplication app(argc, argv);
-    QWidget window;
+    QMainWindow window;
 
     QPushButton toolbarButton1(nullptr);
 
     QPixmap pixmap(":/images/open_file.png");
-    QIcon ButtonIcon(pixmap);
-    toolbarButton1.setIcon(ButtonIcon);
+    QIcon openFileIcon(pixmap);
+    QAction *openAction = new QAction(openFileIcon, "Open", nullptr);
+
 //    toolbarButton1.setFixedSize(50, 50);
 
     QPushButton toolbarButton2("Save", nullptr);
@@ -67,30 +73,54 @@ int main(int argc, char *argv[]) {
     toolbarLayout->addWidget(&toolbarButton2);
     toolbarLayout->addStretch(1);
 
-    QSplitter *splitter = new QSplitter();
+    QSplitter *mainSplitter = new QSplitter();
 
     QWidget *sidebar = new QWidget();
     QVBoxLayout *sidebarLayout = new QVBoxLayout();
+
+    QSplitter *sidebarSplitter = new QSplitter();
+    sidebarSplitter->setOrientation(Qt::Vertical);
+
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
+    scrollArea->setWidgetResizable( true );
+    scrollArea->setGeometry( 10, 10, 200, 200 );
+
     GtwUI::CompPicker compPicker(nullptr);
+
+    scrollArea->setWidget(&compPicker);
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
     GtwUI::Properties properties(nullptr);
-    sidebarLayout->addWidget(&compPicker);
-    sidebarLayout->addWidget(&properties);
+    sidebarSplitter->addWidget(scrollArea);
+    sidebarSplitter->addWidget(&properties);
+    sidebarLayout->addWidget(sidebarSplitter);
     sidebar->setLayout(sidebarLayout);
 
     QWidget *circuitArea = new QWidget();
-    splitter->addWidget(sidebar);
-    splitter->addWidget(circuitArea);
+    mainSplitter->addWidget(sidebar);
+    mainSplitter->addWidget(circuitArea);
 
     QVBoxLayout *windowLayout = new QVBoxLayout();
     windowLayout->addLayout(toolbarLayout);
-    windowLayout->addWidget(splitter);
-    window.setLayout(windowLayout);
+    windowLayout->addWidget(mainSplitter);
+//    window.setLayout(windowLayout);
+
+    QDockWidget *sidebarDock = new QDockWidget();
+    sidebarDock->setWidget(sidebar);
+    window.addDockWidget(Qt::LeftDockWidgetArea, sidebarDock);
+    window.setCentralWidget(circuitArea);
+
+    QToolBar *toolbar = new QToolBar();
+    toolbar->addAction(openAction);
+    window.addToolBar(toolbar);
 
     // Set up the model and configure the view...
     window.setWindowTitle(
             QApplication::translate("nestedlayouts", "GtwEngine"));
     window.show();
     window.setWindowState(Qt::WindowMaximized);
+    QApplication::setStyle(QStyleFactory::create("Fusion"));
 
     return app.exec();
 }
