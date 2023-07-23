@@ -10,6 +10,7 @@
 #include "CompPicker.h"
 #include "Properties.h"
 #include "ToolBar.h"
+#include "CircuitArea.h"
 
 namespace GtwUI {
 
@@ -29,7 +30,7 @@ namespace GtwUI {
 
         ToolBar *toolbar = new ToolBar();
 
-        QWidget *circuitArea = new QWidget();
+        CircuitArea *circuitArea = new CircuitArea();
 
         addDockWidget(Qt::LeftDockWidgetArea, pickerDock);
         addDockWidget(Qt::RightDockWidgetArea, propertiesDock);

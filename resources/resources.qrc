@@ -15,5 +15,7 @@
     <file alias="console.png">console.png</file>
 
     <file alias="and.png">and.png</file>
+
+    <file alias="and.svg">and.svg</file>
   </qresource>
 </RCC>
