@@ -8,6 +8,7 @@
 #include <QtCore>
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
+#include "Camera.h"
 
 namespace GtwUI {
 
@@ -17,9 +18,19 @@ namespace GtwUI {
     public:
         explicit CircuitArea(QWidget* parent = nullptr);
 
+    private:
+        Camera camera;
+
     protected:
         void paintGL() override;
 
+        void mousePressEvent(QMouseEvent *e) override;
+
+        void mouseReleaseEvent(QMouseEvent *e) override;
+
+        void mouseMoveEvent(QMouseEvent *e) override;
+
+        void wheelEvent(QWheelEvent *e) override;
     };
 }
 

@@ -4,6 +4,8 @@
 
 #include "CircuitArea.h"
 #include <QPainter>
+#include <iostream>
+#include <QMouseEvent>
 
 namespace GtwUI {
 
@@ -13,11 +15,38 @@ namespace GtwUI {
 
     void CircuitArea::paintGL() {
         QPainter painter(this);
+
+        painter.scale(camera.getZoom(), camera.getZoom());
+        painter.translate(camera.getX(), camera.getY());
+
+
         QLineF line(10.0, 80.0, 90.0, 20.0);
         painter.drawLine(line);
 
         QIcon icon(":/images/and.svg");
         QPixmap pixmap = icon.pixmap(QSize(32, 32));
         painter.drawPixmap(300, 300, pixmap);
+    }
+
+    void CircuitArea::mousePressEvent(QMouseEvent *e) {
+        QPoint pos = e->pos();
+        camera.setInitialMousePos(pos.x(), pos.y());
+    }
+
+    void CircuitArea::mouseReleaseEvent(QMouseEvent *e) {
+        QWidget::mouseReleaseEvent(e);
+    }
+
+    void CircuitArea::mouseMoveEvent(QMouseEvent *e) {
+        QPoint pos = e->pos();
+        camera.pan(pos.x(), pos.y());
+        repaint();
+    }
+
+    void CircuitArea::wheelEvent(QWheelEvent *e) {
+        QPointF pos = e->position();
+        float angleDelta = e->angleDelta().y();
+        camera.changeZoom(angleDelta / 30, pos.x(), pos.y(), width(), height());
+        repaint();
     }
 }

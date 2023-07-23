@@ -14,8 +14,18 @@
     <file alias="custom.png">custom.png</file>
     <file alias="console.png">console.png</file>
 
-    <file alias="and.png">and.png</file>
-
     <file alias="and.svg">and.svg</file>
+    <file alias="or.svg">or.svg</file>
+    <file alias="buffer.svg">buffer.svg</file>
+    <file alias="light_off.svg">light_off.svg</file>
+    <file alias="light_on.svg">light_on.svg</file>
+    <file alias="switch_off.svg">switch_off.svg</file>
+    <file alias="switch_on.svg">switch_on.svg</file>
+    <file alias="button_off.svg">button_off.svg</file>
+    <file alias="button_on.svg">button_on.svg</file>
+    <file alias="clock_off.svg">clock_off.svg</file>
+    <file alias="clock_on.svg">clock_on.svg</file>
+    <file alias="display.svg">display.svg</file>
+
   </qresource>
 </RCC>

@@ -15,24 +15,24 @@ namespace GtwUI {
 
         QGridLayout *gateBtnLayout = new QGridLayout();
         gateBtnLayout->setSizeConstraint(QLayout::SetFixedSize);
-        addButton(gateBtnLayout, "And", 1, 1);
-        addButton(gateBtnLayout, "Nand", 1, 2);
-        addButton(gateBtnLayout, "Or", 1, 3);
-        addButton(gateBtnLayout, "Nor", 2, 1);
-        addButton(gateBtnLayout, "Xor", 2, 2);
-        addButton(gateBtnLayout, "Xnor", 2, 3);
-        addButton(gateBtnLayout, "Not", 3, 1);
-        addButton(gateBtnLayout, "Buffer", 3, 2);
-        Section* gateSection = new Section("Section", 200, this);
+        addButton(gateBtnLayout, ":/images/and.svg", 1, 1);
+        addButton(gateBtnLayout, ":/images/or.svg", 1, 2);
+        addButton(gateBtnLayout, ":/images/buffer.svg", 1, 3);
+        addButton(gateBtnLayout, ":/images/and.svg", 2, 1);
+        addButton(gateBtnLayout, ":/images/or.svg", 2, 2);
+        addButton(gateBtnLayout, ":/images/buffer.svg", 2, 3);
+        addButton(gateBtnLayout, ":/images/and.svg", 3, 1);
+        addButton(gateBtnLayout, ":/images/or.svg", 3, 2);
+        Section* gateSection = new Section("Gates", 200, this);
         gateSection->setContentLayout(*gateBtnLayout);
 
         QGridLayout *ioButtonLayout = new QGridLayout();
         ioButtonLayout->setSizeConstraint(QLayout::SetFixedSize);
-        addButton(ioButtonLayout, "Switch", 1, 1);
-        addButton(ioButtonLayout, "Button", 1, 2);
-        addButton(ioButtonLayout, "Light", 1, 3);
-        addButton(ioButtonLayout, "Clock", 2, 1);
-        addButton(ioButtonLayout, "Seven Seg Display", 2, 2);
+        addButton(ioButtonLayout, ":/images/switch_off.svg", 1, 1);
+        addButton(ioButtonLayout, ":/images/button_off.svg", 1, 2);
+        addButton(ioButtonLayout, ":/images/light_on.svg", 1, 3);
+        addButton(ioButtonLayout, ":/images/clock_off.svg", 2, 1);
+        addButton(ioButtonLayout, ":/images/display.svg", 2, 2);
         Section* ioSection = new Section("IO", 200, this);
         ioSection->setContentLayout(*ioButtonLayout);
 
@@ -42,13 +42,13 @@ namespace GtwUI {
         setLayout(layout);
     }
 
-    void CompPicker::addButton(QGridLayout *layout, const QString& name, int row, int col){
+    void CompPicker::addButton(QGridLayout *layout, const QString& iconPath, int row, int col){
         QPushButton *button = new QPushButton(nullptr);
-        QPixmap pixmap(":/images/and.png");
+        QPixmap pixmap(iconPath);
         QIcon icon(pixmap);
         button->setIcon(icon);
-        button->setIconSize(QSize(50, 50));
-        button->setFixedSize(75, 75);
+        button->setIconSize(QSize(40, 40));
+        button->setFixedSize(60, 60);
         layout->addWidget(button, row, col);
     }
 
