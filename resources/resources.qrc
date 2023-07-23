@@ -1,6 +1,19 @@
 <RCC>
   <qresource prefix="images">
+    <file alias="new_file.png">new_file.png</file>
     <file alias="open_file.png">open_file.png</file>
+    <file alias="save_file.png">save_file.png</file>
+    <file alias="undo.png">undo.png</file>
+    <file alias="redo.png">redo.png</file>
+    <file alias="cut.png">cut.png</file>
+    <file alias="copy.png">copy.png</file>
+    <file alias="paste.png">paste.png</file>
+    <file alias="delete.png">delete.png</file>
+    <file alias="rotate_counter.png">rotate_counter.png</file>
+    <file alias="rotate.png">rotate.png</file>
+    <file alias="custom.png">custom.png</file>
+    <file alias="console.png">console.png</file>
+
     <file alias="and.png">and.png</file>
   </qresource>
 </RCC>

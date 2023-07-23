@@ -9,6 +9,7 @@
 #include "MainWindow.h"
 #include "CompPicker.h"
 #include "Properties.h"
+#include "ToolBar.h"
 
 namespace GtwUI {
 
@@ -26,11 +27,7 @@ namespace GtwUI {
         QDockWidget *propertiesDock = new QDockWidget();
         propertiesDock->setWidget(properties);
 
-        QPixmap openPixmap(":/images/open_file.png");
-        QIcon openIcon(openPixmap);
-        QAction *openAction = new QAction(openIcon, "Open", nullptr);
-        QToolBar *toolbar = new QToolBar();
-        toolbar->addAction(openAction);
+        ToolBar *toolbar = new ToolBar();
 
         QWidget *circuitArea = new QWidget();
 
