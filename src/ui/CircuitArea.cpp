@@ -6,6 +6,7 @@
 #include <QPainter>
 #include <iostream>
 #include <QMouseEvent>
+#include <QSvgRenderer>
 
 namespace GtwUI {
 
@@ -19,13 +20,11 @@ namespace GtwUI {
         painter.scale(camera.getZoom(), camera.getZoom());
         painter.translate(camera.getX(), camera.getY());
 
-
         QLineF line(10.0, 80.0, 90.0, 20.0);
         painter.drawLine(line);
 
-        QIcon icon(":/images/and.svg");
-        QPixmap pixmap = icon.pixmap(QSize(32, 32));
-        painter.drawPixmap(300, 300, pixmap);
+        QSvgRenderer svgRenderer(QString(":/images/and.svg"), nullptr);
+        svgRenderer.render(&painter, QRectF(300, 300, 50, 50));
     }
 
     void CircuitArea::mousePressEvent(QMouseEvent *e) {
@@ -46,7 +45,7 @@ namespace GtwUI {
     void CircuitArea::wheelEvent(QWheelEvent *e) {
         QPointF pos = e->position();
         float angleDelta = e->angleDelta().y();
-        camera.changeZoom(angleDelta / 30, pos.x(), pos.y(), width(), height());
+        camera.changeZoom(angleDelta / 200, pos.x(), pos.y(), width(), height());
         repaint();
     }
 }

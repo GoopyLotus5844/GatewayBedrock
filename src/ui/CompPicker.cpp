@@ -7,6 +7,9 @@
 #include "Section.h"
 #include <iostream>
 #include <QVBoxLayout>
+#include <QImageReader>
+#include <QSvgRenderer>
+#include <QPainter>
 
 namespace GtwUI {
 
@@ -44,8 +47,17 @@ namespace GtwUI {
 
     void CompPicker::addButton(QGridLayout *layout, const QString& iconPath, int row, int col){
         QPushButton *button = new QPushButton(nullptr);
-        QPixmap pixmap(iconPath);
+
+        QSvgRenderer renderer(QString(iconPath), nullptr);
+        QImage image(40, 40, QImage::Format_ARGB32);
+        image.fill(QColor(0, 0, 0, 0));
+        QPainter painter(&image);
+        renderer.render(&painter);
+
+        QPixmap pixmap;
+        pixmap.convertFromImage(image);
         QIcon icon(pixmap);
+
         button->setIcon(icon);
         button->setIconSize(QSize(40, 40));
         button->setFixedSize(60, 60);
