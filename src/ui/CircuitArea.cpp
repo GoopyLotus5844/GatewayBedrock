@@ -16,6 +16,7 @@ namespace GtwUI {
 
     void CircuitArea::paintGL() {
         QPainter painter(this);
+        painter.fillRect(QRect(0, 0, width(), height()), QBrush(QColor(200, 200, 200)));
 
         painter.scale(camera.getZoom(), camera.getZoom());
         painter.translate(camera.getX(), camera.getY());
