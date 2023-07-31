@@ -23,6 +23,10 @@ namespace GtwUI {
 
         QPixmap pixmap;
 
+        int frames = 0;
+
+        double time = 0;
+
     protected:
         void paintGL() override;
 

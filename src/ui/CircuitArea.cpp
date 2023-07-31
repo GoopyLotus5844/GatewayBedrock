@@ -19,6 +19,15 @@ namespace GtwUI {
     }
 
     void CircuitArea::paintGL() {
+
+
+//        QSvgRenderer svgRenderer(QString(":/images/xnor.svg"), nullptr);
+//        svgRenderer.render(&painter, QRectF(300, 300, 91, 64));
+//
+//        svgRenderer.load(QString(":/images/xor.svg"));
+
+        auto start = std::chrono::high_resolution_clock::now();
+
         QPainter painter(this);
         painter.fillRect(QRect(0, 0, width(), height()), QBrush(QColor(100, 100, 100)));
 
@@ -28,10 +37,9 @@ namespace GtwUI {
         QLineF line(10.0, 80.0, 90.0, 20.0);
         painter.drawLine(line);
 
-//        QSvgRenderer svgRenderer(QString(":/images/xnor.svg"), nullptr);
-//        svgRenderer.render(&painter, QRectF(300, 300, 91, 64));
-//
-//        svgRenderer.load(QString(":/images/xor.svg"));
+        auto stop = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+        std::cout << "first" << duration.count() << std::endl;
 
         for(int y = 0; y < 100; y++) {
             for(int x = 0; x < 100; x++) {
@@ -39,6 +47,10 @@ namespace GtwUI {
 //                svgRenderer.render(&painter, QRectF(x * 100, y * 100, 74, 64));
             }
         }
+
+        stop = std::chrono::high_resolution_clock::now();
+        duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+        std::cout << duration.count() << std::endl;
     }
 
     void CircuitArea::mousePressEvent(QMouseEvent *e) {
