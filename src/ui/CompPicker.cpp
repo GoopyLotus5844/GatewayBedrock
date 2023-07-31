@@ -21,11 +21,11 @@ namespace GtwUI {
         addButton(gateBtnLayout, ":/images/and.svg", 1, 1);
         addButton(gateBtnLayout, ":/images/or.svg", 1, 2);
         addButton(gateBtnLayout, ":/images/buffer.svg", 1, 3);
-        addButton(gateBtnLayout, ":/images/and.svg", 2, 1);
-        addButton(gateBtnLayout, ":/images/or.svg", 2, 2);
+        addButton(gateBtnLayout, ":/images/nand.svg", 2, 1);
+        addButton(gateBtnLayout, ":/images/nor.svg", 2, 2);
         addButton(gateBtnLayout, ":/images/buffer.svg", 2, 3);
-        addButton(gateBtnLayout, ":/images/and.svg", 3, 1);
-        addButton(gateBtnLayout, ":/images/or.svg", 3, 2);
+        addButton(gateBtnLayout, ":/images/xor.svg", 3, 1);
+        addButton(gateBtnLayout, ":/images/xnor.svg", 3, 2);
         Section* gateSection = new Section("Gates", 200, this);
         gateSection->setContentLayout(*gateBtnLayout);
 

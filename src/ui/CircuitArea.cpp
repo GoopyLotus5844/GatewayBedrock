@@ -16,7 +16,7 @@ namespace GtwUI {
 
     void CircuitArea::paintGL() {
         QPainter painter(this);
-        painter.fillRect(QRect(0, 0, width(), height()), QBrush(QColor(200, 200, 200)));
+        painter.fillRect(QRect(0, 0, width(), height()), QBrush(QColor(100, 100, 100)));
 
         painter.scale(camera.getZoom(), camera.getZoom());
         painter.translate(camera.getX(), camera.getY());
@@ -24,8 +24,23 @@ namespace GtwUI {
         QLineF line(10.0, 80.0, 90.0, 20.0);
         painter.drawLine(line);
 
-        QSvgRenderer svgRenderer(QString(":/images/and.svg"), nullptr);
-        svgRenderer.render(&painter, QRectF(300, 300, 50, 50));
+//        QSvgRenderer svgRenderer(QString(":/images/xnor.svg"), nullptr);
+//        svgRenderer.render(&painter, QRectF(300, 300, 91, 64));
+//
+//        svgRenderer.load(QString(":/images/xor.svg"));
+
+        QPixmap *pixmap = new QPixmap(74, 64);
+        QPainter pixPainter = QPainter(pixmap);
+
+        QSvgRenderer svgRenderer(QString(":/images/xor.svg"), nullptr);
+        svgRenderer.render(&pixPainter, QRectF(0, 0, 74, 64));
+
+        for(int y = 0; y < 100; y++) {
+            for(int x = 0; x < 100; x++) {
+//                painter.drawPixmap(x * 74, y * 64, *pixmap);
+                svgRenderer.render(&painter, QRectF(x * 100, y * 100, 74, 64));
+            }
+        }
     }
 
     void CircuitArea::mousePressEvent(QMouseEvent *e) {

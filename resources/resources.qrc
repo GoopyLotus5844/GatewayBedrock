@@ -16,6 +16,10 @@
 
     <file alias="and.svg">and.svg</file>
     <file alias="or.svg">or.svg</file>
+    <file alias="nand.svg">nand.svg</file>
+    <file alias="nor.svg">nor.svg</file>
+    <file alias="xor.svg">xor.svg</file>
+    <file alias="xnor.svg">xnor.svg</file>
     <file alias="buffer.svg">buffer.svg</file>
     <file alias="light_off.svg">light_off.svg</file>
     <file alias="light_on.svg">light_on.svg</file>
