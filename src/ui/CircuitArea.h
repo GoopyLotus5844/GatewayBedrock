@@ -21,6 +21,8 @@ namespace GtwUI {
     private:
         Camera camera;
 
+        QPixmap pixmap;
+
     protected:
         void paintGL() override;
 

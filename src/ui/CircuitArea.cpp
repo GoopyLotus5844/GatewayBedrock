@@ -11,7 +11,11 @@
 namespace GtwUI {
 
     CircuitArea::CircuitArea(QWidget *parent) {
+        pixmap = QPixmap(74, 64);
+        QPainter pixPainter = QPainter(&pixmap);
 
+        QSvgRenderer svgRenderer(QString(":/images/xor.svg"), nullptr);
+        svgRenderer.render(&pixPainter, QRectF(0, 0, 74, 64));
     }
 
     void CircuitArea::paintGL() {
@@ -29,16 +33,10 @@ namespace GtwUI {
 //
 //        svgRenderer.load(QString(":/images/xor.svg"));
 
-        QPixmap *pixmap = new QPixmap(74, 64);
-        QPainter pixPainter = QPainter(pixmap);
-
-        QSvgRenderer svgRenderer(QString(":/images/xor.svg"), nullptr);
-        svgRenderer.render(&pixPainter, QRectF(0, 0, 74, 64));
-
         for(int y = 0; y < 100; y++) {
             for(int x = 0; x < 100; x++) {
-//                painter.drawPixmap(x * 74, y * 64, *pixmap);
-                svgRenderer.render(&painter, QRectF(x * 100, y * 100, 74, 64));
+                painter.drawPixmap(x * 74, y * 64, pixmap);
+//                svgRenderer.render(&painter, QRectF(x * 100, y * 100, 74, 64));
             }
         }
     }
