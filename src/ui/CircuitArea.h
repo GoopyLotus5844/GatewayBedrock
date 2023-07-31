@@ -23,9 +23,15 @@ namespace GtwUI {
 
         QPixmap pixmap;
 
-        int frames = 0;
+        clock_t deltaTime = 0;
 
-        double time = 0;
+        unsigned int frames = 0;
+
+        double  frameRate = 30;
+
+        double  averageFrameTimeMilliseconds = 33.333;
+
+        void renderCircuit();
 
     protected:
         void paintGL() override;

@@ -10,7 +10,6 @@ namespace GtwUI {
     Camera::Camera() : x(0), y(0), zoom(1), prevMouseX(0), prevMouseY(0) { }
 
     void Camera::pan(int mouseX, int mouseY) {
-        std::cout << mouseX << std::endl;
         int dx = mouseX - prevMouseX;
         int dy = mouseY - prevMouseY;
         x += dx * (1 / zoom);
@@ -30,7 +29,6 @@ namespace GtwUI {
     }
 
     void Camera::setInitialMousePos(int mouseX, int mouseY) {
-        std::cout << mouseX << std::endl;
         prevMouseX = mouseX;
         prevMouseY = mouseY;
     }

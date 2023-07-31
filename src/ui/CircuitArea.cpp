@@ -18,16 +18,32 @@ namespace GtwUI {
         svgRenderer.render(&pixPainter, QRectF(0, 0, 74, 64));
     }
 
+    double clockToMilliseconds(clock_t ticks){
+        return (ticks / (double) CLOCKS_PER_SEC)*1000.0;
+    }
+
     void CircuitArea::paintGL() {
+        clock_t beginFrame = clock();
+        renderCircuit();
+        clock_t endFrame = clock();
 
+        deltaTime += endFrame - beginFrame;
+        frames ++;
 
-//        QSvgRenderer svgRenderer(QString(":/images/xnor.svg"), nullptr);
-//        svgRenderer.render(&painter, QRectF(300, 300, 91, 64));
-//
-//        svgRenderer.load(QString(":/images/xor.svg"));
+        if(clockToMilliseconds(deltaTime) > 1000.0) {
+            frameRate = (double) frames * 0.5 +  frameRate * 0.5;
+            frames = 0;
+            deltaTime -= CLOCKS_PER_SEC;
+            averageFrameTimeMilliseconds  = 1000.0 / (frameRate == 0 ? 0.001 : frameRate);
 
-        auto start = std::chrono::high_resolution_clock::now();
+            if(true)
+                std::cout<<"FrameTime was:"<<averageFrameTimeMilliseconds<<std::endl;
+            else
+                std::cout<<"CPU time was:"<<averageFrameTimeMilliseconds<<std::endl;
+        }
+    }
 
+    void CircuitArea::renderCircuit() {
         QPainter painter(this);
         painter.fillRect(QRect(0, 0, width(), height()), QBrush(QColor(100, 100, 100)));
 
@@ -37,20 +53,11 @@ namespace GtwUI {
         QLineF line(10.0, 80.0, 90.0, 20.0);
         painter.drawLine(line);
 
-        auto stop = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-        std::cout << "first" << duration.count() << std::endl;
-
         for(int y = 0; y < 100; y++) {
             for(int x = 0; x < 100; x++) {
                 painter.drawPixmap(x * 74, y * 64, pixmap);
-//                svgRenderer.render(&painter, QRectF(x * 100, y * 100, 74, 64));
             }
         }
-
-        stop = std::chrono::high_resolution_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-        std::cout << duration.count() << std::endl;
     }
 
     void CircuitArea::mousePressEvent(QMouseEvent *e) {
